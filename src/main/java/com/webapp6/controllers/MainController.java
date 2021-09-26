@@ -15,6 +15,6 @@ public class MainController {
             required = false,
             defaultValue = "user") String name, Model model){
         model.addAttribute("name",name);
-        return "/view";
+        return "/index";
     }
 }
