@@ -9,6 +9,7 @@
         <tr class="tableHeader">
             <td>id</td>
             <td>fio</td>
+            <td>dob</td>
             <td>companyid</td>
             <td>salary</td>
 
@@ -17,6 +18,7 @@
             <tr class="tableBody">
                 <td>${employee.id}</td>
                 <td>${employee.fio}</td>
+                <td>${employee.dob?date}</td>
                 <td>${employee.companyid}</td>
                 <td>${employee.salary}</td>
             </tr>

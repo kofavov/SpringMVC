@@ -1,38 +1,39 @@
 package com.webapp6.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import java.util.Date;
+
 @Entity
 @Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Basic
     @NotBlank(message = "fio is required")
     private String fio;
-
+    @Basic
     private int salary;
-//    private Date dob;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Column(name="dob",nullable = true)
+    private Date dob;
+
 
     @Min(value = 0,message = "Min id = 0")
     private int companyid;
-//    private String dobs;
 
-//    public String getDobs() {
-//        return dobs;
-//    }
-//
-//    public void setDobs(String dobs) {
-//        this.dobs = dobs;
-//    }
 
-    public Employee(int id, String fio, int salary,  int companyid) {
+    public Employee(int id, String fio, int salary,  int companyid,Date dob) {
         this.id = id;
         this.fio = fio;
         this.salary = salary;
-//        this.dob = dob;
+        this.dob = dob;
         this.companyid = companyid;
 //        this.dobs = Integer.toString(dob.getYear())+"-"+Integer.toString(dob.getMonth())+"-"+Integer.toString(dob.getDay());
     }
@@ -64,13 +65,13 @@ public class Employee {
         this.salary = salary;
     }
 
-//    public Date getDob() {
-//        return dob;
-//    }
+    public Date getDob() {
+        return dob;
+    }
 
-//    public void setDob(Date dob) {
-//        this.dob = dob;
-//    }
+    public void setDob(Date dob) {
+        this.dob = dob;
+    }
 
     public int getCompanyid() {
         return companyid;
