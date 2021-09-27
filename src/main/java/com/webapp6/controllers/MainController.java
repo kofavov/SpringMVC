@@ -18,9 +18,10 @@ import java.util.*;
 @Controller
 public class MainController {
     private static List<Employee> employees = new ArrayList<>();
-    static {
-        employees.add(new Employee(1,"a",1000, 1));
-        employees.add(new Employee(2,"b",2000,2));}
+//    static {
+//       employees.add(new Employee(1,"a",1000, 1));
+//        employees.add(new Employee(2,"b",2000,2));
+//    }
     @GetMapping("/view")
     public String view(@RequestParam(value = "name",
             required = false,
