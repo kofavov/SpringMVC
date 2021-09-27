@@ -1,12 +1,16 @@
 package com.webapp6.dao;
 
+import com.webapp6.models.Employee;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
+@Component
 public class EmployeeDAO {
     private static Connection connection;
 
@@ -31,6 +35,21 @@ public class EmployeeDAO {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public List<Employee> getEmployees() throws SQLException {
+        List<Employee> employees = new ArrayList<>();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM employee");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Employee employee = new Employee();
+            employee.setId(resultSet.getInt(1));
+            employee.setFio(resultSet.getString(2));
+            employee.setCompanyid(resultSet.getInt(3));
+            employee.setSalary(resultSet.getInt(4));
+            employees.add(employee);
+        }
+        return employees;
     }
 
 
