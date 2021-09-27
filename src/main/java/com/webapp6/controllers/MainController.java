@@ -6,11 +6,13 @@ import org.springframework.stereotype.Controller;
 
 
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -37,17 +39,18 @@ public class MainController {
     }
 
     @GetMapping("/employees/new")
-    public String getPageNewEmployee(){
+    public String getPageNewEmployee(Model model){
+        model.addAttribute("employee",new Employee());
         return "/new";
     }
     @PostMapping("/employees/new")
-    public String addNewEmployee(@ModelAttribute Employee employee){
+    public String addNewEmployee(@ModelAttribute @Valid Employee employee, BindingResult bindingResult){
 //        Date date = new Date(Integer.parseInt(dob.substring(0,dob.indexOf("-"))),
 //                Integer.parseInt(dob.substring(dob.indexOf("-")+1,dob.lastIndexOf("-"))),
 //                Integer.parseInt(dob.substring(dob.lastIndexOf("-"),dob.length())));
+        if (bindingResult.hasErrors())
+            return "/new";
         employees.add(employee);
         return "redirect:/employees";
-
-
     }
 }

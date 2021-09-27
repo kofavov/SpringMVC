@@ -1,10 +1,20 @@
 package com.webapp6.models;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
 public class Employee {
+
+    @Min(value = 0,message = "Min id = 0")
     private int id;
+    @NotBlank(message = "fio is required")
     private String fio;
+
     private int salary;
 //    private Date dob;
+
+    @Min(value = 0,message = "Min id = 0")
     private int companyid;
 //    private String dobs;
 
