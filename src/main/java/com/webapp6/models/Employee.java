@@ -1,30 +1,28 @@
 package com.webapp6.models;
 
-import java.util.Date;
-
 public class Employee {
     private int id;
     private String fio;
     private int salary;
-    private Date dob;
-    private int companyId;
-    private String dobs;
+//    private Date dob;
+    private int companyid;
+//    private String dobs;
 
-    public String getDobs() {
-        return dobs;
-    }
+//    public String getDobs() {
+//        return dobs;
+//    }
+//
+//    public void setDobs(String dobs) {
+//        this.dobs = dobs;
+//    }
 
-    public void setDobs(String dobs) {
-        this.dobs = dobs;
-    }
-
-    public Employee(int id, String fio, int salary, Date dob, int companyId) {
+    public Employee(int id, String fio, int salary,  int companyid) {
         this.id = id;
         this.fio = fio;
         this.salary = salary;
-        this.dob = dob;
-        this.companyId = companyId;
-        this.dobs = Integer.toString(dob.getYear())+"-"+Integer.toString(dob.getMonth())+"-"+Integer.toString(dob.getDay());
+//        this.dob = dob;
+        this.companyid = companyid;
+//        this.dobs = Integer.toString(dob.getYear())+"-"+Integer.toString(dob.getMonth())+"-"+Integer.toString(dob.getDay());
     }
 
     public Employee() {
@@ -54,19 +52,19 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Date getDob() {
-        return dob;
+//    public Date getDob() {
+//        return dob;
+//    }
+
+//    public void setDob(Date dob) {
+//        this.dob = dob;
+//    }
+
+    public int getCompanyid() {
+        return companyid;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-    public int getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(int companyId) {
-        this.companyId = companyId;
+    public void setCompanyid(int companyid) {
+        this.companyid = companyid;
     }
 }

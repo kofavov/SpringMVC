@@ -6,7 +6,7 @@
 <h1>Employees</h1>
 <ul>
     <#list employees as employee>
-        <li>id = ${employee.id},fio = ${employee.fio}, salary = ${employee.salary}, dob = ${employee.dobs}, companyId = ${employee.companyId}</li>
+        <li>id = ${employee.id},fio = ${employee.fio}, salary = ${employee.salary},  companyId = ${employee.companyid}</li>
     </#list>
 </ul>
 </body>
