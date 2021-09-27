@@ -3,6 +3,7 @@ package com.webapp6.controllers;
 
 import com.webapp6.dao.EmployeeDAO;
 import com.webapp6.models.Employee;
+import com.webapp6.util.EmployeeValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -22,8 +23,15 @@ import java.util.*;
 
 @Controller
 public class MainController {
+    private final EmployeeDAO employeeDAO;
+    private final EmployeeValidator employeeValidator;
     @Autowired
-    private EmployeeDAO employeeDAO;
+    public MainController(EmployeeDAO employeeDAO, EmployeeValidator employeeValidator) {
+        this.employeeDAO = employeeDAO;
+        this.employeeValidator = employeeValidator;
+    }
+
+
 
     @GetMapping("/view")
     public String view(@RequestParam(value = "name",
@@ -46,9 +54,7 @@ public class MainController {
     }
     @PostMapping("/employees/new")
     public String addNewEmployee(@ModelAttribute @Valid Employee employee, BindingResult bindingResult){
-//        Date date = new Date(Integer.parseInt(dob.substring(0,dob.indexOf("-"))),
-//                Integer.parseInt(dob.substring(dob.indexOf("-")+1,dob.lastIndexOf("-"))),
-//                Integer.parseInt(dob.substring(dob.lastIndexOf("-"),dob.length())));
+        employeeValidator.validate(employee,bindingResult);
         if (bindingResult.hasErrors())
             return "/new";
 //        employees.add(employee);

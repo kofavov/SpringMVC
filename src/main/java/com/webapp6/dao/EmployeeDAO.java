@@ -52,5 +52,28 @@ public class EmployeeDAO {
         return employees;
     }
 
+    public Employee getOneById(int id){
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from employee where id = ?");
+            preparedStatement.setInt(1,id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                Employee employee = new Employee();
+                employee.setId(resultSet.getInt(1));
+                employee.setFio(resultSet.getString(2));
+                employee.setCompanyid(resultSet.getInt(3));
+                employee.setSalary(resultSet.getInt(4));
+                return employee;
+            }
+        } catch (SQLException e) {
+
+        }
+        return null;
+    }
+
+    public void add(Employee employee){
+
+    }
+
 
 }
