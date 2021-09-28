@@ -53,11 +53,11 @@ public class MainController {
         return "/new";
     }
     @PostMapping("/employees/new")
-    public String addNewEmployee(@ModelAttribute @Valid Employee employee, BindingResult bindingResult){
+    public String addNewEmployee(@ModelAttribute @Valid Employee employee, BindingResult bindingResult) throws SQLException {
         employeeValidator.validate(employee,bindingResult);
         if (bindingResult.hasErrors())
             return "/new";
-//        employees.add(employee);
+        employeeDAO.add(employee);
         return "redirect:/employees";
     }
 }

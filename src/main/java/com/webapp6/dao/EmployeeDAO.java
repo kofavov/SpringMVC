@@ -71,8 +71,15 @@ public class EmployeeDAO {
         return null;
     }
 
-    public void add(Employee employee){
-
+    public void add(Employee employee) throws SQLException {
+        PreparedStatement preparedStatement =
+                connection.prepareStatement
+                        ("INSERT into employee values (?,?,?,?)");
+        preparedStatement.setInt(1,employee.getId());
+        preparedStatement.setString(2,employee.getFio());
+        preparedStatement.setInt(3,employee.getCompanyid());
+        preparedStatement.setInt(4,employee.getSalary());
+        preparedStatement.execute();
     }
 
 
