@@ -7,11 +7,11 @@
 <body>
 <h1>New employee</h1>
 <@sf.form action="/employees/new" method="post" modelAttribute="employee">
-    <div>
-        <@sf.label path="id">Id</@sf.label>
-        <@sf.input path="id"/>
-        <@sf.errors path="id"/>
-    </div>
+<#--    <div>-->
+<#--        <@sf.label path="id">Id</@sf.label>-->
+<#--        <@sf.input path="id"/>-->
+<#--        <@sf.errors path="id"/>-->
+<#--    </div>-->
     <div>
         <@sf.label path="fio">Fio</@sf.label>
         <@sf.input path="fio"/>

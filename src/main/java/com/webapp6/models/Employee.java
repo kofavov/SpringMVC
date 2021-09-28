@@ -9,7 +9,6 @@ import javax.validation.constraints.NotEmpty;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Min(value = 0,message = "Min id = 0")
     private int id;
     @NotBlank(message = "fio is required")
     private String fio;

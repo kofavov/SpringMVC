@@ -24,11 +24,14 @@ public class HibernateEmployeeDAO implements EmplDAO{
 
     @Override
     public Employee getOneById(int id) {
-        return null;
+        String hql = String.format("from %s where id=:%d",Employee.class.getCanonicalName(),id);
+        Query<Employee> query = currentSession().createQuery(hql,Employee.class);
+        query.setParameter("id",id);
+        return query.list().stream().findAny().orElse(null);
     }
 
     @Override
     public void add(Employee employee) {
-
+        currentSession().save(employee);
     }
 }

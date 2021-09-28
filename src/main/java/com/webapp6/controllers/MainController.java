@@ -41,7 +41,7 @@ public class MainController {
         return "/index";
     }
     @GetMapping("/employees")
-    public String getEmployees(Model model) throws SQLException {
+    public String getEmployees(Model model) {
 
         model.addAttribute("employees",employeeDAO.getEmployees());
         return "/employees";
@@ -53,10 +53,11 @@ public class MainController {
         return "/new";
     }
     @PostMapping("/employees/new")
-    public String addNewEmployee(@ModelAttribute @Valid Employee employee, BindingResult bindingResult) throws SQLException {
-        employeeValidator.validate(employee,bindingResult);
-        if (bindingResult.hasErrors())
-            return "/new";
+    //убрал @Valid
+    public String addNewEmployee(@ModelAttribute Employee employee, BindingResult bindingResult)  {
+//        employeeValidator.validate(employee,bindingResult);
+//        if (bindingResult.hasErrors())
+//            return "/new";
         employeeDAO.add(employee);
         return "redirect:/employees";
     }
