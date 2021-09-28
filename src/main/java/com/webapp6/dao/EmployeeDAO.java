@@ -14,14 +14,14 @@ import java.util.List;
 import java.util.Properties;
 
 @Component
-public class EmployeeDAO {
+public class EmployeeDAO implements EmplDAO {
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
     public EmployeeDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
+    @Override
     public List<Employee> getEmployees()  {
 //        List<Employee> employees = new ArrayList<>();
 //
@@ -37,7 +37,7 @@ public class EmployeeDAO {
 //        }
         return jdbcTemplate.query("SELECT * FROM employee",new BeanPropertyRowMapper<>(Employee.class));
     }
-
+    @Override
     public Employee getOneById(int id){
 //        try {
 //            PreparedStatement preparedStatement = connection.prepareStatement("SELECT * from employee where id = ?");
@@ -58,7 +58,7 @@ public class EmployeeDAO {
                 "SELECT * from employee where id = ?",new Object[]{id},new BeanPropertyRowMapper<>(Employee.class))
                 .stream().findAny().orElse(null);
     }
-
+    @Override
     public void add(Employee employee)  {
 //        PreparedStatement preparedStatement =
 //                connection.prepareStatement
