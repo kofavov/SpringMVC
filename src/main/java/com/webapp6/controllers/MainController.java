@@ -2,6 +2,7 @@ package com.webapp6.controllers;
 
 
 import com.webapp6.dao.EmployeeDAO;
+import com.webapp6.dao.HibernateEmployeeDAO;
 import com.webapp6.models.Employee;
 import com.webapp6.util.EmployeeValidator;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,15 +25,13 @@ import java.util.*;
 
 @Controller
 public class MainController {
-    private final EmployeeDAO employeeDAO;
+    private final HibernateEmployeeDAO employeeDAO;
     private final EmployeeValidator employeeValidator;
     @Autowired
-    public MainController(EmployeeDAO employeeDAO, EmployeeValidator employeeValidator) {
+    public MainController(HibernateEmployeeDAO employeeDAO, EmployeeValidator employeeValidator) {
         this.employeeDAO = employeeDAO;
         this.employeeValidator = employeeValidator;
     }
-
-
 
     @GetMapping("/view")
     public String view(@RequestParam(value = "name",

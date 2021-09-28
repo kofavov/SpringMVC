@@ -1,11 +1,14 @@
 package com.webapp6.models;
 
+import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
-
+@Entity
+@Table(name = "employee")
 public class Employee {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Min(value = 0,message = "Min id = 0")
     private int id;
     @NotBlank(message = "fio is required")
