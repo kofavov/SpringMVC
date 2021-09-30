@@ -3,9 +3,10 @@ package com.webapp6.controllers;
 
 //import com.webapp6.dao.HibernateEmployeeDAO;
 import com.webapp6.dao.EmplDAO;
-import com.webapp6.dao.JPAEmplDAO;
+//import com.webapp6.dao.JPAEmplDAO;
 import com.webapp6.models.Employee;
 //import com.webapp6.util.EmployeeValidator;
+import com.webapp6.service.EmplService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -22,8 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class MainController {
     @Autowired
-    @Qualifier("JPAEmplDAO")
-    private EmplDAO employeeDAO;
+
+    private EmplService emplService;
 //    private final EmployeeValidator employeeValidator;
 //    @Autowired
 //    public MainController(JPAEmplDAO employeeDAO) {
@@ -41,7 +42,7 @@ public class MainController {
     @GetMapping("/employees")
     public String getEmployees(Model model) {
 
-        model.addAttribute("employees",employeeDAO.getEmployees());
+        model.addAttribute("employees",emplService.getEmployees());
         return "/employees";
     }
 
@@ -56,7 +57,7 @@ public class MainController {
 //        employeeValidator.validate(employee,bindingResult);
 //        if (bindingResult.hasErrors())
 //            return "/new";
-        employeeDAO.add(employee);
+        emplService.add(employee);
         return "redirect:/employees";
     }
 }
