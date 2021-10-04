@@ -4,6 +4,7 @@
 </head>
 <body>
 <h1>Employees</h1>
+<a href="/employees/new">Добавить работника</a>
 <#if employees?has_content>
     <table border="1" cellspacing="0" cellpadding="1">
         <tr class="tableHeader">
@@ -12,6 +13,7 @@
             <td>dob</td>
             <td>companyid</td>
             <td>salary</td>
+            <td>delete</td>
 
         </tr>
         <#foreach employee in employees>
@@ -21,11 +23,17 @@
                 <td>${employee.dob?date}</td>
                 <td>${employee.companyid}</td>
                 <td>${employee.salary}</td>
+                <td>
+                    <form action="/employees/${employee.id}/delete" method="post">
+                        <input type="submit" value="delete">
+                    </form>
+                </td>
             </tr>
         </#foreach>
     </table>
     <#else>
     <p>No employees yet</p>
 </#if>
+
 </body>
 </html>

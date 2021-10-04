@@ -1,5 +1,6 @@
 package com.webapp6.models;
 
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import java.util.Date;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id",unique = true)
     private int id;
     @Basic
     @NotBlank(message = "fio is required")
@@ -21,7 +23,7 @@ public class Employee {
     private int salary;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Column(name="dob",nullable = true)
+    @Column(name="dob")
     private Date dob;
 
 

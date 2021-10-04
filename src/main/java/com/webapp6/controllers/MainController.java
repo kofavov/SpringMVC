@@ -14,10 +14,10 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.Optional;
 
 
 @Controller
@@ -53,11 +53,32 @@ public class MainController {
     }
     @PostMapping("/employees/new")
     //убрал @Valid
-    public String addNewEmployee(@ModelAttribute Employee employee, BindingResult bindingResult)  {
+    public String addNewEmployee(@ModelAttribute  @Valid Employee employee, BindingResult bindingResult)  {
 //        employeeValidator.validate(employee,bindingResult);
-//        if (bindingResult.hasErrors())
-//            return "/new";
+        if (bindingResult.hasErrors())
+            return "/new";
         emplService.add(employee);
         return "redirect:/employees";
+    }
+    @GetMapping("/employees/{id}/edit")
+    public String edit(Model model, @PathVariable("id")int id){
+        Optional<Employee>e=emplService.getOneById(id);
+        if(e.isPresent()){
+        model.addAttribute("employee",e.get());
+        return "/edit";}
+        else return "redirect:/employees";
+    }
+    @PostMapping("/employees/{id}/edit")
+    public String update(@ModelAttribute @Valid Employee employee, BindingResult bindingResult, @PathVariable("id") int id){
+        if (bindingResult.hasErrors())
+            return "/edit";
+        emplService.change(employee,id);
+        return "redirect:/employees";
+    }
+    @PostMapping("/employees/{id}/delete")
+    public String delete(@PathVariable("id") int id){
+        emplService.delete(id);
+        return "redirect:/employees";
+
     }
 }
