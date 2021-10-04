@@ -75,7 +75,7 @@ public class MainController {
         emplService.change(employee,id);
         return "redirect:/employees";
     }
-    @PostMapping("/employees/{id}/delete")
+    @GetMapping("/employees/{id}/delete")
     public String delete(@PathVariable("id") int id){
         emplService.delete(id);
         return "redirect:/employees";

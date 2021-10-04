@@ -30,7 +30,7 @@
                     </form>
                 </td>
                 <td>
-                    <form action="/employees/${employee.id}/delete" method="post">
+                    <form action="/employees/${employee.id}/delete" method="get">
                         <input type="submit" value="delete">
                     </form>
                 </td>
