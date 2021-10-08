@@ -12,6 +12,8 @@
             <td>name</td>
             <td>openyear</td>
             <td>employees</td>
+            <td>average salary</td>
+            <td>List employees</td>
             <td>edit</td>
             <td>delete</td>
 
@@ -22,6 +24,12 @@
                 <td>${company.name}</td>
                 <td>${company.openyear}</td>
                 <td>${company.employeesSize}</td>
+                <td>${company.averageSalary}</td>
+                <td>
+                    <form action="/employees/${company.id}/getListForCompany" method="get">
+                        <input type="submit" value="getList">
+                    </form>
+                </td>
                 <td>
                     <form action="/companies/${company.id}/edit" method="get">
                         <input type="submit" value="edit">

@@ -13,12 +13,8 @@ import java.util.Set;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
     @Query("select e from Employee e order by e.id")
-    List<Employee> findAllByIdOrderById();
-//    Employee findByCompanyid(long id);
-//    Employee findByFio(String s);
-//    Employee findAllByCompanyid(long id);
-//    void deleteEmployeeById(int id);
-
+    List<Employee> findAllOrderById();
+    List<Employee> findAllByCompanyId(int id);
 
 
 

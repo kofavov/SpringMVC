@@ -13,4 +13,6 @@ public interface EmplService {
     void change(Employee employee,int id) throws CompanyNotFoundException;
 
     void delete(int id);
+
+    List<Employee> getEmployeesForCompany(int id);
 }

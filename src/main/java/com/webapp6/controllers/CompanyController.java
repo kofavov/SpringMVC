@@ -17,8 +17,12 @@ import java.util.Optional;
 
 @Controller
 public class CompanyController {
-    @Autowired
-    CompanyService companyService;
+    final CompanyService companyService;
+
+    public CompanyController(CompanyService companyService) {
+        this.companyService = companyService;
+    }
+
     @GetMapping("/companies")
     public String getCompanies(Model model) {
 
@@ -61,4 +65,5 @@ public class CompanyController {
         return "redirect:/companies";
 
     }
+
 }

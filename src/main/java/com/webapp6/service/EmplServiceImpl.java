@@ -5,7 +5,6 @@ import com.webapp6.models.Company;
 import com.webapp6.models.Employee;
 import com.webapp6.repository.CompanyRepository;
 import com.webapp6.repository.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,13 +16,17 @@ import java.util.Optional;
 @Service
 @Transactional(readOnly = true)
 public class EmplServiceImpl implements EmplService {
-    @Autowired
-    private EmployeeRepository employeeRepository;
-    @Autowired
-    private CompanyRepository companyRepository;
+    private final EmployeeRepository employeeRepository;
+    private final CompanyRepository companyRepository;
+
+    public EmplServiceImpl(EmployeeRepository employeeRepository, CompanyRepository companyRepository) {
+        this.employeeRepository = employeeRepository;
+        this.companyRepository = companyRepository;
+    }
+
     @Override
     public List<Employee> getEmployees() {
-        List<Employee> employees=employeeRepository.findAllByIdOrderById();
+        List<Employee> employees=employeeRepository.findAllOrderById();
         return employees;
     }
 
@@ -69,6 +72,11 @@ public class EmplServiceImpl implements EmplService {
     @Transactional
     public void delete(int id) {
     employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Employee> getEmployeesForCompany(int id) {
+        return employeeRepository.findAllByCompanyId(id);
     }
 
 

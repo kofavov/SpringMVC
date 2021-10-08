@@ -95,4 +95,9 @@ public class MainController {
         return "redirect:/employees";
 
     }
+    @GetMapping("/employees/{id}/getListForCompany")
+    public String getListForCompany(@PathVariable("id") int id,Model model){
+        model.addAttribute("employees",emplService.getEmployeesForCompany(id));
+        return "/employee/employees";
+    }
 }

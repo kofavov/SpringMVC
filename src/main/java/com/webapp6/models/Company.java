@@ -22,10 +22,13 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+    @Column(name = "name",unique = true)
     private String name;
     private int openyear;
     @Transient
     private int employeesSize;
+    @Transient
+    private double averageSalary;
 
     @Override
     public boolean equals(Object o) {

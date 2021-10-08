@@ -15,12 +15,26 @@ import java.util.Optional;
 @Service
 @Transactional(readOnly = true)
 public class CompanyServiceImpl implements CompanyService {
-    @Autowired
-    private CompanyRepository companyRepository;
+    private final CompanyRepository companyRepository;
+
+    public CompanyServiceImpl(CompanyRepository companyRepository) {
+        this.companyRepository = companyRepository;
+    }
+
     @Override
     public List<Company> getAllCompanies() {
         List<Company> companies = companyRepository.findAll(Sort.by(Sort.Direction.ASC,"id"));
-        companies.forEach(c->c.setEmployeesSize(c.getEmployees().size()));
+        companies.forEach(c->{c.setEmployeesSize(c.getEmployees().size());
+            double allSalaries = 0;
+            for (Employee e:c.getEmployees()
+                 ) {
+                allSalaries+=e.getSalary();
+            }
+            c.setAverageSalary(allSalaries/c.getEmployees().size());
+            if(Double.isNaN(c.getAverageSalary())||Double.isInfinite(c.getAverageSalary()))
+                c.setAverageSalary(0);
+        });
+
         return companies;
     }
 
