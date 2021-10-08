@@ -11,7 +11,7 @@
             <td>id</td>
             <td>fio</td>
             <td>dob</td>
-            <td>companyid</td>
+            <td>company</td>
             <td>salary</td>
             <td>edit</td>
             <td>delete</td>
@@ -22,7 +22,7 @@
                 <td>${employee.id}</td>
                 <td>${employee.fio}</td>
                 <td>${employee.dob?date}</td>
-                <td>${employee.companyid}</td>
+                <td>${employee.company.name}</td>
                 <td>${employee.salary}</td>
                 <td>
                     <form action="/employees/${employee.id}/edit" method="get">

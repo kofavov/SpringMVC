@@ -1,17 +1,23 @@
 package com.webapp6.models;
 
-import org.hibernate.validator.constraints.UniqueElements;
+import lombok.*;
+import org.hibernate.Hibernate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "employee")
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",unique = true)
@@ -25,61 +31,24 @@ public class Employee {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name="dob")
     private Date dob;
+    @Transient
+    private String c;
 
+    @ManyToOne()
+    @JoinColumn(name="company_id")
+    private Company company;
 
-    @Min(value = 0,message = "Min id = 0")
-    private int companyid;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Employee employee = (Employee) o;
 
-
-    public Employee(int id, String fio, int salary,  int companyid,Date dob) {
-        this.id = id;
-        this.fio = fio;
-        this.salary = salary;
-        this.dob = dob;
-        this.companyid = companyid;
-//        this.dobs = Integer.toString(dob.getYear())+"-"+Integer.toString(dob.getMonth())+"-"+Integer.toString(dob.getDay());
+        return Objects.equals(id, employee.id);
     }
 
-    public Employee() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFio() {
-        return fio;
-    }
-
-    public void setFio(String fio) {
-        this.fio = fio;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
-    }
-
-    public int getCompanyid() {
-        return companyid;
-    }
-
-    public void setCompanyid(int companyid) {
-        this.companyid = companyid;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, fio, salary, dob, c, company);
     }
 }

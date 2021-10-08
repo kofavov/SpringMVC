@@ -2,11 +2,11 @@
 
 <html>
 <head>
-    <title>New employee</title>
+    <title>Update employee</title>
 </head>
 <body>
-<h1>New employee</h1>
-<#--<@sf.form action="/employees/new" method="post" modelAttribute="employee">-->
+<h1>Update ${employee.fio}</h1>
+<#--<@sf.form action="/employees/${employee.id}/edit" method="patch" modelAttribute="employee">-->
 <#--&lt;#&ndash;    <div>&ndash;&gt;-->
 <#--&lt;#&ndash;        <@sf.label path="id">Id</@sf.label>&ndash;&gt;-->
 <#--&lt;#&ndash;        <@sf.input path="id"/>&ndash;&gt;-->
@@ -28,17 +28,19 @@
 <#--        <@sf.errors path="companyid"/>-->
 <#--    </div>-->
 
-<#--   <input type="date" name="dob" placeholder="dob">-->
-
-
+<#--   <div>-->
+<#--       <@sf.label path="dob">dob</@sf.label>-->
+<#--       <@sf.input path="dob"/>-->
+<#--       <@sf.errors path="dob"/>-->
+<#--   </div>-->
 <#--    <input type="submit">-->
 <#--</@sf.form>-->
-<form action="/employees/new" method="post">
-<#--    <input name="id" type="number" placeholder="id">-->
-    <input name="fio" type="text" placeholder="fio" aria-label="fio">
-    <input name="salary" type="number" placeholder="salary" aria-label="salary">
-    <input name="dob" type="date" placeholder="Day-Month-Year" aria-label="dob">
-    <input name="companyid" type="number" placeholder="companyid" aria-label="companyid">
+<form action="/employees/${employee.id}/edit" method="post">
+    <#--    <input name="id" type="number" placeholder="id">-->
+    <input name="fio" type="text" placeholder="fio" >
+    <input name="salary" type="number" placeholder="salary" >
+    <input name="dob" type="date" placeholder="Day-Month-Year" >
+    <input name="c" type="text" placeholder="company" aria-label="c">
     <input type="submit">
 </form>
 </body>
