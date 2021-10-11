@@ -5,6 +5,7 @@
 <body>
 <h1>Employees</h1>
 <a href="/employees/new">Добавить работника</a>
+
 <#if employees?has_content>
     <table border="1" cellspacing="0" cellpadding="1">
         <tr class="tableHeader">

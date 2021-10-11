@@ -38,7 +38,7 @@ public class EmplServiceImpl implements EmplService {
     @Transactional
     @Override
     public void add(Employee employee) throws CompanyNotFoundException {
-        Optional<Company> company = companyRepository.findByName(employee.getC());
+        Optional<Company> company = companyRepository.findById(Integer.parseInt(employee.getC()));
         if (company.isPresent()){
             employee.setCompany(company.get());
             employeeRepository.save(employee);
@@ -57,7 +57,7 @@ public class EmplServiceImpl implements EmplService {
         e.setFio(employee.getFio());
         e.setSalary(employee.getSalary());
         e.setDob(employee.getDob());
-        Optional<Company> company = companyRepository.findByName(employee.getC());
+        Optional<Company> company = companyRepository.findById(Integer.parseInt(employee.getC()));
         if (company.isPresent()){
             employee.setCompany(company.get());
             employeeRepository.save(employee);

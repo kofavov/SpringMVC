@@ -74,6 +74,7 @@ public class MainController {
         Optional<Employee>e=emplService.getOneById(id);
         if(e.isPresent()){
         model.addAttribute("employee",e.get());
+        model.addAttribute("companies",companyService.getAllCompanies());
         return "/employee/edit";}
         else return "redirect:/employees";
     }
@@ -82,7 +83,7 @@ public class MainController {
         if (bindingResult.hasErrors())
             return "/employee/edit";
         try {
-            emplService.add(employee);
+            emplService.change(employee,id);
             return "redirect:/employees";
         }catch (CompanyNotFoundException exception){
            return "/companyNotFoundException";

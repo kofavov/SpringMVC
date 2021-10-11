@@ -38,17 +38,17 @@
     <input name="fio" type="text" placeholder="fio" aria-label="fio">
     <input name="salary" type="number" placeholder="salary" aria-label="salary">
     <input name="dob" type="date" placeholder="Day-Month-Year" aria-label="dob">
-<#--&lt;#&ndash;    <input name="company_id" type="number" placeholder="company_id" aria-label="company_id">&ndash;&gt;-->
-<#--    <label>-->
-<#--        <select name="company" >-->
-<#--            <option>Выберите из списка</option>-->
-<#--            <#foreach c in companies>-->
-<#--                <option>${c.name}</option>-->
-<#--            </#foreach>-->
-<#--        </select>-->
-<#--    </label>-->
+<#--    <input name="company_id" type="number" placeholder="company_id" aria-label="company_id">-->
+    <label>
+        <select name="c" >
+            <option>Выберите из списка</option>
+            <#foreach c in companies>
+                <option value="${c.id}">${c.name}</option>
+            </#foreach>
+        </select>
+    </label>
 
-    <input name="c" type="text" placeholder="company" aria-label="c">
+<#--    <input name="c" type="text" placeholder="company" aria-label="c">-->
     <input type="submit">
 </form>
 </body>

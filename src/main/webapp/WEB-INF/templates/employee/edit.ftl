@@ -40,7 +40,15 @@
     <input name="fio" type="text" placeholder="fio" >
     <input name="salary" type="number" placeholder="salary" >
     <input name="dob" type="date" placeholder="Day-Month-Year" >
-    <input name="c" type="text" placeholder="company" aria-label="c">
+    <label>
+        <select name="c" >
+            <option disabled>Выберите из списка</option>
+            <#foreach c in companies>
+                <option value="${c.id}">${c.name}</option>
+            </#foreach>
+        </select>
+    </label>
+<#--    <input name="c" type="text" placeholder="company" aria-label="c">-->
     <input type="submit">
 </form>
 </body>
