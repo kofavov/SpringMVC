@@ -11,6 +11,9 @@ public interface CompanyService {
     Optional<Company> getOneById(int id);
     void add(Company company);
     void change(Company company,int id);
-
     void delete(int id);
+    List<Company> getEmployeesSortByName();
+    List<Company> getEmployeesSortByYear();
+    List<Company> getEmployeesSortBySalary();
+    List<Company> getEmployeesSortByEmployees();
 }

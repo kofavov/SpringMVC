@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,5 +66,33 @@ public class CompanyServiceImpl implements CompanyService {
     @Transactional
     public void delete(int id) {
         companyRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Company> getEmployeesSortByName() {
+        List<Company> companies = getAllCompanies();
+        companies.sort(Comparator.comparing(Company::getName));
+        return companies;
+    }
+
+    @Override
+    public List<Company> getEmployeesSortByYear() {
+        List<Company> companies = getAllCompanies();
+        companies.sort(Comparator.comparing(Company::getOpenyear));
+        return companies;
+    }
+
+    @Override
+    public List<Company> getEmployeesSortBySalary() {
+        List<Company> companies = getAllCompanies();
+        companies.sort(Comparator.comparing(Company::getAverageSalary));
+        return companies;
+    }
+
+    @Override
+    public List<Company> getEmployeesSortByEmployees() {
+        List<Company> companies = getAllCompanies();
+        companies.sort(Comparator.comparing(Company::getEmployeesSize));
+        return companies;
     }
 }

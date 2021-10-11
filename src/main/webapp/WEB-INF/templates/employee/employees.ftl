@@ -5,7 +5,11 @@
 <body>
 <h1>Employees</h1>
 <a href="/employees/new">Добавить работника</a>
-
+<p>Сортировать по <a href="/employees/sortbyfio">имени</a>
+    <a href="/employees/sortbysalary">зарплате</a>
+    <a href="/employees/sortbycompany">компании</a>
+    <a href="/employees/sortbydob">дате рождения</a>
+</p>
 <#if employees?has_content>
     <table border="1" cellspacing="0" cellpadding="1">
         <tr class="tableHeader">

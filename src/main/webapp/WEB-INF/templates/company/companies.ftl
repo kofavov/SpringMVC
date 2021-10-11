@@ -5,6 +5,11 @@
 <body>
 <h1>Companies</h1>
 <a href="/companies/new">Добавить компанию</a>
+<p>Сортировать по <a href="/companies/sortbyname">имени</a>
+    <a href="/companies/sortbyemployees">количеству сотрудников</a>
+    <a href="/companies/sortbysalary">средней зарплате</a>
+    <a href="/companies/sortbyyear">году основания</a>
+</p>
 <#if companies?has_content>
     <table border="1" cellspacing="0" cellpadding="1">
         <tr class="tableHeader">

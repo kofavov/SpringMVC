@@ -48,4 +48,6 @@ public class Company {
         result = 31 * result + openyear;
         return result;
     }
+
+
 }

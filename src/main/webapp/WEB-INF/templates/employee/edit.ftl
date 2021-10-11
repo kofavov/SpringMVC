@@ -39,7 +39,7 @@
     <#--    <input name="id" type="number" placeholder="id">-->
     <input name="fio" type="text" placeholder="fio" >
     <input name="salary" type="number" placeholder="salary" >
-    <input name="dob" type="date" placeholder="Day-Month-Year" >
+    <input name="dob" type="date" placeholder="Day-Month-Year">
     <label>
         <select name="c" >
             <option disabled>Выберите из списка</option>

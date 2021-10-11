@@ -5,10 +5,14 @@ import com.webapp6.models.Company;
 import com.webapp6.models.Employee;
 import com.webapp6.repository.CompanyRepository;
 import com.webapp6.repository.EmployeeRepository;
+import org.hibernate.mapping.Collection;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,8 +30,7 @@ public class EmplServiceImpl implements EmplService {
 
     @Override
     public List<Employee> getEmployees() {
-        List<Employee> employees=employeeRepository.findAllOrderById();
-        return employees;
+        return employeeRepository.findAllOrderById();
     }
 
     @Override
@@ -77,6 +80,28 @@ public class EmplServiceImpl implements EmplService {
     @Override
     public List<Employee> getEmployeesForCompany(int id) {
         return employeeRepository.findAllByCompanyId(id);
+    }
+
+    @Override
+    public List<Employee> getEmployeesSortByFio() {
+        return employeeRepository.findAll(Sort.by(Sort.Direction.ASC,"fio"));
+    }
+
+    @Override
+    public List<Employee> getEmployeesSortBySalary() {
+        return employeeRepository.findAll(Sort.by(Sort.Direction.ASC,"salary"));
+    }
+
+    @Override
+    public List<Employee> getEmployeesSortByCompany() {
+        List<Employee> employees = employeeRepository.findAll();
+        employees.sort(Comparator.comparing(c -> c.getCompany().getName()));
+        return employees;
+    }
+
+    @Override
+    public List<Employee> getEmployeesSortByDob() {
+        return employeeRepository.findAll(Sort.by(Sort.Direction.ASC,"dob"));
     }
 
 

@@ -15,4 +15,12 @@ public interface EmplService {
     void delete(int id);
 
     List<Employee> getEmployeesForCompany(int id);
+
+    List<Employee>  getEmployeesSortByFio();
+
+    List<Employee> getEmployeesSortBySalary();
+
+    List<Employee> getEmployeesSortByCompany();
+
+    List<Employee> getEmployeesSortByDob();
 }

@@ -101,4 +101,25 @@ public class MainController {
         model.addAttribute("employees",emplService.getEmployeesForCompany(id));
         return "/employee/employees";
     }
+
+    @GetMapping("/employees/sortbyfio")
+    public String sortByFio(Model model){
+        model.addAttribute("employees",emplService.getEmployeesSortByFio());
+        return "/employee/employees";
+    }
+    @GetMapping("/employees/sortbysalary")
+    public String sortBySalary(Model model){
+        model.addAttribute("employees",emplService.getEmployeesSortBySalary());
+        return "/employee/employees";
+    }
+    @GetMapping("/employees/sortbycompany")
+    public String sortByCompany(Model model){
+        model.addAttribute("employees",emplService.getEmployeesSortByCompany());
+        return "/employee/employees";
+    }
+    @GetMapping("/employees/sortbydob")
+    public String sortByDob(Model model){
+        model.addAttribute("employees",emplService.getEmployeesSortByDob());
+        return "/employee/employees";
+    }
 }

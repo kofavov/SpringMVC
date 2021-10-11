@@ -65,5 +65,24 @@ public class CompanyController {
         return "redirect:/companies";
 
     }
-
+    @GetMapping("/companies/sortbyname")
+    public String sortByName(Model model){
+        model.addAttribute("companies",companyService.getEmployeesSortByName());
+        return "/company/companies";
+    }
+    @GetMapping("/companies/sortbysalary")
+    public String sortBySalary(Model model){
+        model.addAttribute("companies",companyService.getEmployeesSortBySalary());
+        return "/company/companies";
+    }
+    @GetMapping("/companies/sortbyyear")
+    public String sortByYear(Model model){
+        model.addAttribute("companies",companyService.getEmployeesSortByYear());
+        return "/company/companies";
+    }
+    @GetMapping("/companies/sortbyemployees")
+    public String sortByEmployees(Model model){
+        model.addAttribute("companies",companyService.getEmployeesSortByEmployees());
+        return "/company/companies";
+    }
 }
