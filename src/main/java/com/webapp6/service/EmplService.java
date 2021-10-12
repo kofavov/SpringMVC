@@ -11,16 +11,15 @@ public interface EmplService {
     Optional<Employee> getOneById(int id);
     void add(Employee employee) throws CompanyNotFoundException;
     void change(Employee employee,int id) throws CompanyNotFoundException;
-
     void delete(int id);
 
     List<Employee> getEmployeesForCompany(int id);
-
     List<Employee>  getEmployeesSortByFio();
-
     List<Employee> getEmployeesSortBySalary();
-
     List<Employee> getEmployeesSortByCompany();
-
     List<Employee> getEmployeesSortByDob();
+    List<Employee>  getEmployeesFindByFio(String s);
+    List<Employee> getEmployeesFindBySalary(int i, int j);
+    List<Employee> getEmployeesFindBySalaryAndCompany(int i, int j,int cid);
+    List<Employee> getEmployeesFindByFioAndCompany(String s,int cid);
 }

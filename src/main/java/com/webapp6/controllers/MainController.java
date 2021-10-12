@@ -99,7 +99,9 @@ public class MainController {
     @GetMapping("/employees/{id}/getListForCompany")
     public String getListForCompany(@PathVariable("id") int id,Model model){
         model.addAttribute("employees",emplService.getEmployeesForCompany(id));
-        return "/employee/employees";
+        Optional<Company> e=companyService.getOneById(id);
+        e.ifPresent(company -> model.addAttribute("company", company));
+        return "/employee/employeesincompany";
     }
 
     @GetMapping("/employees/sortbyfio")
@@ -121,5 +123,38 @@ public class MainController {
     public String sortByDob(Model model){
         model.addAttribute("employees",emplService.getEmployeesSortByDob());
         return "/employee/employees";
+    }
+    @GetMapping("/employees/findbyfio")
+    public String findByFio(@RequestParam("fio") String s,Model model){
+        model.addAttribute("employees",emplService.getEmployeesFindByFio(s));
+        return "/employee/employees";
+    }
+    @GetMapping("/employees/findbysalary")
+    public String findBySalary(@RequestParam(name = "i",required = false,defaultValue = "-2147483648") int i,
+                            @RequestParam(name = "j",required = false,defaultValue = "2147483647") int j,
+                            Model model){
+
+        model.addAttribute("employees",emplService.getEmployeesFindBySalary(i,j));
+        return "/employee/employees";
+    }
+    @GetMapping("/employees/findbyfio/{cid}")
+    public String findByFioAndCompany(@RequestParam("fio") String s,
+                                      @PathVariable("cid") int cid,
+                                      Model model){
+        model.addAttribute("employees",emplService.getEmployeesFindByFioAndCompany(s, cid));
+        Optional<Company> e=companyService.getOneById(cid);
+        e.ifPresent(company -> model.addAttribute("company", company));
+        return "/employee/employeesincompany";
+    }
+    @GetMapping("/employees/findbysalary/{cid}")
+    public String findBySalaryAndCompany(@RequestParam(name = "i",required = false,defaultValue = "-2147483648") int i,
+                                         @RequestParam(name = "j",required = false,defaultValue = "2147483647") int j,
+                                         @PathVariable("cid") int cid,
+                                         Model model){
+
+        model.addAttribute("employees",emplService.getEmployeesFindBySalaryAndCompany(i,j,cid));
+        Optional<Company> e=companyService.getOneById(cid);
+        e.ifPresent(company -> model.addAttribute("company", company));
+        return "/employee/employeesincompany";
     }
 }

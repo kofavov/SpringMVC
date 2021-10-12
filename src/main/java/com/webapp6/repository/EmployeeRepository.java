@@ -15,8 +15,8 @@ public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
     @Query("select e from Employee e order by e.id")
     List<Employee> findAllOrderById();
     List<Employee> findAllByCompanyId(int id);
-
-
-
-
+    List<Employee> findByFio(String s);
+    List<Employee> findAllBySalaryBetween(int i,int j);
+    List<Employee> findAllBySalaryBetweenAndCompanyId(int i,int j,int companyid);
+    List<Employee> findByFioAndCompanyId(String s,int companyid);
 }

@@ -104,5 +104,26 @@ public class EmplServiceImpl implements EmplService {
         return employeeRepository.findAll(Sort.by(Sort.Direction.ASC,"dob"));
     }
 
+    @Override
+    public List<Employee> getEmployeesFindByFio(String s) {
+        return employeeRepository.findByFio(s);
+    }
+
+    @Override
+    public List<Employee> getEmployeesFindBySalary(int i, int j) {
+
+        return employeeRepository.findAllBySalaryBetween(i,j);
+    }
+
+    @Override
+    public List<Employee> getEmployeesFindBySalaryAndCompany(int i, int j, int cid) {
+        return employeeRepository.findAllBySalaryBetweenAndCompanyId(i,j,cid);
+    }
+
+    @Override
+    public List<Employee> getEmployeesFindByFioAndCompany(String s, int cid) {
+        return employeeRepository.findByFioAndCompanyId(s,cid);
+    }
+
 
 }

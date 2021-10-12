@@ -9,7 +9,22 @@
     <a href="/employees/sortbysalary">зарплате</a>
     <a href="/employees/sortbycompany">компании</a>
     <a href="/employees/sortbydob">дате рождения</a>
+
 </p>
+Найти по ФИО<form action="/employees/findbyfio" method="get">
+    <input name="fio" type="text" placeholder="fio" aria-label="fio">
+    <input type="submit" value="Найти">
+
+</form>
+
+    Найти по зарплате между
+    <form action="/employees/findbysalary" method="get">
+        <input name="i" type="number" placeholder="от" aria-label=""  >
+        <input name="j" type="number" placeholder="до" aria-label="" >
+        <input type="submit" value="Найти">
+    </form>
+
+
 <#if employees?has_content>
     <table border="1" cellspacing="0" cellpadding="1">
         <tr class="tableHeader">
