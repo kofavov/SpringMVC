@@ -1,20 +1,23 @@
 package com.webapp6.config;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-
+@Order(1)
 public class Init  extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class<?>[] {
+                PersistenceConfig.class,SecurityConfig.class
+        };
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{com.webapp6.config.Config.class};
+        return new Class[]{WebConfig.class};
     }
 
     @Override
@@ -31,4 +34,5 @@ public class Init  extends AbstractAnnotationConfigDispatcherServletInitializer 
         aContext.addFilter("hiddenHttpMethodFilter",
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
     }
+
 }

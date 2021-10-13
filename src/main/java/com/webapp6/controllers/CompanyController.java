@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Controller
 public class CompanyController {
-    final CompanyService companyService;
+    private final CompanyService companyService;
 
     public CompanyController(CompanyService companyService) {
         this.companyService = companyService;
