@@ -11,7 +11,7 @@ public class Init  extends AbstractAnnotationConfigDispatcherServletInitializer 
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class<?>[] {
-                PersistenceConfig.class,SecurityConfig.class
+                PersistenceConfig.class,SecurityConfig.class,PasswordEncoderConfig.class
         };
     }
 

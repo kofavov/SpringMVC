@@ -5,6 +5,7 @@
     <title>New employee</title>
 </head>
 <body>
+<a href="/logout">Logout</a>
 <h1>New employee</h1>
 <#--<@sf.form action="/employees/new" method="post" modelAttribute="employee">-->
 <#--&lt;#&ndash;    <div>&ndash;&gt;-->

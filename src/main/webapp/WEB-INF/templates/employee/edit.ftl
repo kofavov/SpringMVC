@@ -5,6 +5,7 @@
     <title>Update employee</title>
 </head>
 <body>
+<a href="/logout">Logout</a>
 <h1>Update ${employee.fio}</h1>
 <#--<@sf.form action="/employees/${employee.id}/edit" method="patch" modelAttribute="employee">-->
 <#--&lt;#&ndash;    <div>&ndash;&gt;-->

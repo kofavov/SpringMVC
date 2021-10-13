@@ -23,6 +23,6 @@ public class User {
     @Email
     private String email;
 
-    @Size(min = 8, max = 20,message = "Пароль должен иметь длину от 8 до 20 символов")
+    @Size(min = 8,message = "Пароль должен иметь длину от 8 символов")
     private String password;
 }

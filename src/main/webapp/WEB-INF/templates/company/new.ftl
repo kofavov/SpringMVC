@@ -5,6 +5,7 @@
     <title>New company</title>
 </head>
 <body>
+<a href="/logout">Logout</a>
 <h1>New company</h1>
 <#--<@sf.form action="/companies/new"  method="post" modelAttribute="company">-->
 <#--&lt;#&ndash;    <div>&ndash;&gt;-->

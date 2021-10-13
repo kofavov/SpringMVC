@@ -3,6 +3,7 @@
     <title>Companies</title>
 </head>
 <body>
+<a href="/logout">Logout</a>
 <h1>Companies</h1>
 <a href="/companies/new">Добавить компанию</a>
 <p>Сортировать по <a href="/companies/sortbyname">имени</a>

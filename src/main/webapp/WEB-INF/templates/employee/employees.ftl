@@ -3,6 +3,7 @@
     <title>Employees</title>
 </head>
 <body>
+<a href="/logout">Logout</a>
 <h1>Employees</h1>
 <a href="/employees/new">Добавить работника</a>
 <p>Сортировать по <a href="/employees/sortbyfio">имени</a>

@@ -3,6 +3,7 @@
     <title>Edit company</title>
 </head>
 <body>
+<a href="/logout">Logout</a>
 <h1>Edit company</h1>
 <@sf.form action="/companies/${company.id}/edit"  method="post" modelAttribute="company">
 <#--    <div>-->

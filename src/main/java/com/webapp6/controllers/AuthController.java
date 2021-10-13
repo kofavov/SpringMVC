@@ -1,15 +1,13 @@
 package com.webapp6.controllers;
 
+import com.webapp6.models.Company;
 import com.webapp6.models.User;
 import com.webapp6.service.UserService;
 import com.webapp6.util.UserValidator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -38,7 +36,10 @@ public class AuthController {
     }
 
     @RequestMapping("/login")
-    public String login() {
+    public String login(@RequestParam(name ="error",required = false)boolean error,Model model) {
+        if (Boolean.TRUE.equals(error))
+            model.addAttribute("error", true);
         return "auth/sign_in";
     }
+
 }
