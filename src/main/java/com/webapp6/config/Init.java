@@ -1,9 +1,12 @@
 package com.webapp6.config;
 
 import org.springframework.core.annotation.Order;
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 @Order(1)
@@ -28,6 +31,10 @@ public class Init  extends AbstractAnnotationConfigDispatcherServletInitializer 
     public void onStartup(ServletContext aServletContext) throws ServletException {
         super.onStartup(aServletContext);
         registerHiddenFieldFilter(aServletContext);
+        FilterRegistration.Dynamic encodingFilter = aServletContext.addFilter("encoding-filter", new CharacterEncodingFilter());
+        encodingFilter.setInitParameter("encoding","UTF-8");
+        encodingFilter.setInitParameter("forceEncoding", "true");
+        encodingFilter.addMappingForUrlPatterns(null,true,"/*");
     }
 
     private void registerHiddenFieldFilter(ServletContext aContext) {
@@ -35,4 +42,10 @@ public class Init  extends AbstractAnnotationConfigDispatcherServletInitializer 
                 new HiddenHttpMethodFilter()).addMappingForUrlPatterns(null ,true, "/*");
     }
 
+//    @Override
+//    protected Filter[] getServletFilters() {
+//        return new Filter[]{
+//                new CharacterEncodingFilter("UTF-8",true)
+//        };
+//    }
 }

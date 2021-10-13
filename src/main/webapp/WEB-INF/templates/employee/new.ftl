@@ -1,7 +1,8 @@
 <#assign sf=JspTaglibs["http://www.springframework.org/tags/form"]>
 
-<html>
+<html lang="ru">
 <head>
+    <meta charset="utf-8">
     <title>New employee</title>
 </head>
 <body>
