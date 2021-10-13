@@ -74,7 +74,12 @@ public class EmplServiceImpl implements EmplService {
     @Override
     @Transactional
     public void delete(int id) {
-    employeeRepository.deleteById(id);
+        Optional <Employee> employee = getOneById(id);
+        if (employee.isPresent()){
+            Employee e = employee.get();
+            e.getCompany().getEmployees().remove(e);
+            e.setCompany(null);
+            employeeRepository.delete(e);}
     }
 
     @Override
