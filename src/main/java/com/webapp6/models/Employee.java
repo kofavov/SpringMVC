@@ -44,6 +44,7 @@ public class Employee {
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         Employee employee = (Employee) o;
 
+
         return Objects.equals(id, employee.id);
     }
 

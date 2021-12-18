@@ -111,7 +111,7 @@ public class EmplServiceImpl implements EmplService {
 
     @Override
     public List<Employee> getEmployeesFindByFio(String s) {
-        return employeeRepository.findByFio(s);
+        return employeeRepository.findByFioContaining(s);
     }
 
     @Override
